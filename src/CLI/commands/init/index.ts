@@ -2,6 +2,7 @@ import { Command } from "commander";
 import inquirer from "inquirer";
 import fs from "fs-extra";
 import path from "path";
+import CruseIgnore from "../../../config/cruseConfig";
 
 const Init = new Command("init")
   .description("initialize .cruse")
@@ -57,14 +58,13 @@ const Init = new Command("init")
       const cruseFilePath = path.resolve(process.cwd(), ".cruse");
 
       await fs.writeJson(cruseFilePath, cruseConfig, { spaces: 2 });
+      await CruseIgnore();
 
       const gitignorePath = path.resolve(process.cwd(), ".gitignore");
       const gitignoreContent = await fs.readFile(gitignorePath, "utf-8");
       if (!gitignoreContent.includes(".cruse")) {
         await fs.appendFile(gitignorePath, "\n.cruse\n");
       }
-
-      console.log(".cruse file created successfully!");
     } catch (error) {
       console.error("Error initializing .cruse file:", error);
     }
