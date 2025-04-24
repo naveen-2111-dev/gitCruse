@@ -25,6 +25,7 @@
   "dependencies": {
     "commander": "^13.1.0",
     "fs-extra": "^11.3.0",
-    "inquirer": "^12.6.0"
+    "inquirer": "^12.6.0",
+    "simple-git": "^3.27.0"
   }
 }
