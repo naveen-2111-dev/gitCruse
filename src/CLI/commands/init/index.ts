@@ -6,47 +6,45 @@ import path from "path";
 const Init = new Command("init")
   .description("initialize .cruse")
   .action(async () => {
-    const questions = [
-      {
-        type: "input",
-        name: "githubToken",
-        message: "Enter your GitHub Access Token:",
-        validate: (input: string) =>
-          input ? true : "GitHub token is required",
-      },
-      {
-        type: "input",
-        name: "username",
-        message: "Enter your GitHub Username:",
-        validate: (input: string) =>
-          input ? true : "GitHub username is required",
-      },
-      {
-        type: "input",
-        name: "repo",
-        message: "Enter the GitHub Repository Name:",
-        validate: (input: string) =>
-          input ? true : "Repository name is required",
-      },
-      {
-        type: "input",
-        name: "commitInterval",
-        message: "Enter the commit interval in minutes (e.g., 10, 30, 60):",
-        validate: (input: string) =>
-          !isNaN(Number(input)) && Number(input) > 0
-            ? true
-            : "Please enter a valid number",
-      },
-      {
-        type: "confirm",
-        name: "confirmPush",
-        message: "Would you like to enable automatic pushing of commits?",
-        default: true,
-      },
-    ];
-
     try {
-      const answers = await inquirer.prompt(questions);
+      const answers = await inquirer.prompt([
+        {
+          type: "input",
+          name: "githubToken",
+          message: "Enter your GitHub Access Token:",
+          validate: (input: string) =>
+            input ? true : "GitHub token is required",
+        },
+        {
+          type: "input",
+          name: "username",
+          message: "Enter your GitHub Username:",
+          validate: (input: string) =>
+            input ? true : "GitHub username is required",
+        },
+        {
+          type: "input",
+          name: "repo",
+          message: "Enter the GitHub Repository Name:",
+          validate: (input: string) =>
+            input ? true : "Repository name is required",
+        },
+        {
+          type: "input",
+          name: "commitInterval",
+          message: "Enter the commit interval in minutes (e.g., 10, 30, 60):",
+          validate: (input: string) =>
+            !isNaN(Number(input)) && Number(input) > 0
+              ? true
+              : "Please enter a valid number",
+        },
+        {
+          type: "confirm",
+          name: "confirmPush",
+          message: "Would you like to enable automatic pushing of commits?",
+          default: true,
+        },
+      ]);
 
       const cruseConfig = {
         githubToken: answers.githubToken,
