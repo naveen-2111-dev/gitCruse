@@ -1,11 +1,6 @@
 export const InitTemplate = `
 <div style="background:#f8fafc;padding:40px 20px;font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
     <div style="max-width:600px;margin:0 auto;background:#ffffff;padding:48px;border-radius:8px;box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);border:1px solid #e2e8f0;">
-    
-      <div style="text-align:center;margin-bottom:32px;">
-        <img src="https://ipfs.io/ipfs/bafkreia75csnjmwaz4r45apjekyy3i7ov7zk3nuglsf4janb4euvyim3cy" alt="GitCruse Logo" style="height:40px;" />
-        <div style="height:1px;background:#e2e8f0;margin:24px 0;"></div>
-      </div>
 
       <h1 style="text-align:center;color:#1e293b;font-size:24px;font-weight:600;margin:0 0 16px 0;">Project Successfully Initialized</h1>
       <p style="font-size:15px;color:#475569;line-height:1.5;margin:0 0 24px 0;text-align:center;">
