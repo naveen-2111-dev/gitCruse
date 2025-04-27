@@ -5,6 +5,9 @@ import path from "path";
 import ora from "ora";
 import figlet from "figlet";
 import CruseIgnore from "../../../config/cruseConfig";
+import sendEmail from "../../../utils/mailer";
+import { getPrimaryEmail } from "../../../utils/getMail";
+import { InitTemplate } from "../../../templates/init";
 
 interface CruseAnswers {
   automationLevel: "full" | "partial";
@@ -129,6 +132,20 @@ const Init = new Command("init")
       }
 
       savingSpinner.succeed("Configuration saved successfully!");
+
+      const emailData = await getPrimaryEmail(answers.githubToken);
+
+      if (emailData && emailData.email) {
+        sendEmail({
+          template: InitTemplate,
+          subject: `Cruse control has taken over your GitHub push actions for the repo ${answers.repo}`,
+          email: emailData.email,
+        });
+      } else {
+        console.log(
+          "No primary email found for the GitHub user. Email not sent."
+        );
+      }
     } catch (error) {
       console.error("\nError initializing .cruse file:", error);
     }
