@@ -8,6 +8,7 @@ import CruseIgnore from "../../../config/cruseConfig";
 import sendEmail from "../../../utils/mailer";
 import { getPrimaryEmail } from "../../../utils/getMail";
 import { InitTemplate } from "../../../templates/init";
+import { git } from "../../../utils/git";
 
 interface CruseAnswers {
   automationLevel: "full" | "partial";
@@ -132,6 +133,14 @@ const Init = new Command("init")
       }
 
       savingSpinner.succeed("Configuration saved successfully!");
+
+      const isRepo = git.checkIsRepo();
+      if (!isRepo) {
+        await git.init();
+        console.log(
+          "🚀 Git repo initialized. You're ready to commit greatness!"
+        );
+      }
 
       const emailData = await getPrimaryEmail(answers.githubToken);
 

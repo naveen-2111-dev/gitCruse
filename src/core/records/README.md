@@ -1,0 +1,1 @@
+stores all data into the .cruse file acts as a offline git record keeper
