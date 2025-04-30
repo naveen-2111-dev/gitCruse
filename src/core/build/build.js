@@ -15,20 +15,25 @@ class Workflow {
         console.log(`→ Step: ${step.name || "Unnamed"} | Command: ${step.run}`);
         try {
           const { exec } = await import("child_process");
-          await new Promise((resolve, reject) => {
+          const success = await new Promise((resolve, reject) => {
             exec(step.run, (error, stdout, stderr) => {
               if (error) {
                 console.error(`Error in step "${step.name}": ${error.message}`);
-                reject(error);
+                reject(false);
               } else {
                 if (stdout) console.log(stdout);
                 if (stderr) console.error(stderr);
-                resolve(undefined);
+                resolve(true);
               }
             });
           });
+          if (!success) {
+            console.log(`Build failed at step: ${step.name}`);
+            return false;
+          }
         } catch (err) {
           console.error(`Step failed: ${err.message}`);
+          return false;
         }
       } else if (step.uses) {
         console.warn(`Skipped: '${step.name}' — uses '${step.uses}'`);
@@ -36,6 +41,7 @@ class Workflow {
         console.warn(`Unknown step format:`, step);
       }
     }
+    return true;
   }
 }
 
