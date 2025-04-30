@@ -1,3 +1,3 @@
-declare module "./getFlow.js" {
+declare module "./build.js" {
   export function GetBuildWorkflows(): Promise<void>;
 }
