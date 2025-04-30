@@ -10,7 +10,7 @@ function readCruseFile(): any {
 
   try {
     const data = fs.readFileSync(filePath, "utf-8");
-    const json_data = JSON.parse(data);
+    const json_data: any = JSON.parse(data);
 
     return json_data;
   } catch (error) {
