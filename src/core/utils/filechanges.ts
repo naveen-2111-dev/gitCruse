@@ -14,4 +14,4 @@ async function GetChangedFiles() {
   }
 }
 
-GetChangedFiles();
+export { GetChangedFiles };

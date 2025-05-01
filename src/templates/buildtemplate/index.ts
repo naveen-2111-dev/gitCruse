@@ -1,4 +1,4 @@
-export const BuildResultTemplate = (status: string, workflowName: string) => {
+export const BuildResultTemplate = (status: string) => {
   const isSuccess = status === "success";
 
   const title = isSuccess ? "Build Succeeded" : "Build Failed";
