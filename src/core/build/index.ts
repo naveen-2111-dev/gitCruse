@@ -45,7 +45,7 @@ async function BuildProject(): Promise<boolean | void> {
 
       if (mail?.email) {
         sendEmail({
-          template: BuildResultTemplate("failed", workflow.name),
+          template: BuildResultTemplate("failed"),
           subject: `Build failed for ${cruse.repo}`,
           email: mail.email,
         });
@@ -62,7 +62,7 @@ async function BuildProject(): Promise<boolean | void> {
 
   if (mail?.email) {
     sendEmail({
-      template: BuildResultTemplate("success", flowname || "all workflows"),
+      template: BuildResultTemplate("success"),
       subject: `🎉 Successful build for ${cruse.repo}`,
       email: mail.email,
     });
