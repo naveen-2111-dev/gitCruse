@@ -53,7 +53,7 @@ async function getCrusior() {
   } catch (error) {
     notifier.notify({
       title: "GitCruse Error",
-      message: "Something went wrong while loading your key.",
+      message: `Something went wrong while loading your key. ${error}`,
     });
 
     return null;

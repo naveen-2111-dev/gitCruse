@@ -7,6 +7,9 @@
     "lint": "eslint . --ext .ts,.tsx",
     "build": "tsc"
   },
+  "bin": {
+    "gitcruse": "bin/gitcruse"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

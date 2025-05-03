@@ -9,6 +9,7 @@ import sendEmail from "../../../utils/mailer";
 import { getPrimaryEmail } from "../../../utils/getMail";
 import { InitTemplate } from "../../../templates/init";
 import { git } from "../../../utils/git";
+import setupGlobalCruse from "../../utils/setGlobalcruse";
 
 interface CruseAnswers {
   automationLevel: "full" | "partial";
@@ -131,6 +132,8 @@ const Init = new Command("init")
           await fs.appendFile(gitignorePath, "\n.cruse\n");
         }
       }
+
+      setupGlobalCruse(process.cwd());
 
       savingSpinner.succeed("Configuration saved successfully!");
 
