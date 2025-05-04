@@ -7,7 +7,7 @@ interface ChangedFiles {
 }
 
 export class Reader {
-  private changedFiles?: ChangedFiles;
+  private changedFiles?: ChangedFiles; //function name
   private fileContents: Record<string, string> = {};
 
   constructor(changedFiles?: ChangedFiles) {
